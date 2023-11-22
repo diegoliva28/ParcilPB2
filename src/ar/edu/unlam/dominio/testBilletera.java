@@ -7,7 +7,7 @@ import org.junit.Test;
 public class testBilletera {
 
 	@Test
-	public void test() {
+	public void hola() {
 		fail("Not yet implemented");
 	}
 
