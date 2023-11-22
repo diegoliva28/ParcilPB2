@@ -12,9 +12,17 @@ public class CuentaVirtual extends MedioDePago implements Pagadora, Transferible
 		// TODO Auto-generated constructor stub
 	}
 	
+	
 	@Override
-	public Boolean pagar(Compra compra, Double importe) {
-		return null;
+	public Boolean pagar(Compra compra, Double importe) throws SaldoInsuficineteException {
+		if(importe>getSaldo()) {
+			throw new SaldoInsuficineteException();
+		}
+		
+		setSaldo(getSaldo()-importe);
+		compra.SePago();
+		
+		return true;
 	}
 
 

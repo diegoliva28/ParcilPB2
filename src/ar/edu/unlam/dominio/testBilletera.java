@@ -11,6 +11,7 @@ import ar.edu.unlam.billeteraTest.MedioDePago;
 import ar.edu.unlam.billeteraTest.Persona;
 import ar.edu.unlam.billeteraTest.PersonaFisica;
 import ar.edu.unlam.billeteraTest.PersonaJuridica;
+import ar.edu.unlam.billeteraTest.SaldoInsuficineteException;
 import ar.edu.unlam.billeteraTest.TarjetaDeCredito;
 import ar.edu.unlam.billeteraTest.TarjetaDeDebito;
 import ar.edu.unlam.billeteraTest.Transaccion;
@@ -119,5 +120,35 @@ public class testBilletera {
 		assertEquals(saldoVendedorEsperado, saldoVendedor);
 		assertTrue(buscada.isPagada());
 	}
+	
+//	@Test(expected = SaldoInsuficineteException.class)
+//	public void queSeLanceUnaExcepcionSiElSaldoDeLaCuentaVirtualEsInsuficienteParaHacerUnaCompra() {
+//		//1
+//		
+//		Billetera MP=new Billetera();
+//		String nombre="diego";
+//		//2
+//		MedioDePago cuentaConsumidor=new CuentaVirtual(12345);
+////		cuentaConsumidor.depositar(200.0);
+//		MedioDePago tarjetaVendedor=new TarjetaDeDebito(12346);
+//		
+//		PersonaJuridica vender=new PersonaJuridica(nombre, 123, 1235);
+//		Persona consu=new PersonaFisica(nombre, 123, 1234);
+//		MP.almacenarPersona(consu);
+//		MP.almacenarPersona(vender);
+//		MP.almacenarPersonaConMedio(cuentaConsumidor,consu);
+//		MP.almacenarPersonaConMedio(tarjetaVendedor,vender);
+//		
+//		
+//		
+////		Transaccion compra=new Compra(200.0, tarjateC, 1234, nueva.getIdentificar());
+//		Transaccion venta=vender.generarQR(1,50.0, tarjetaVendedor, consu.getIdentificar());
+//		
+//		MP.almacenarTransaccion(venta);
+////		MP.realizarPago(venta.getCodigo(),tarjetaConsumidor,consu.getIdentificar());
+//		MP.realizarPago(venta.getCodigo(),cuentaConsumidor);
+//	}
+	
+	
 
 }
