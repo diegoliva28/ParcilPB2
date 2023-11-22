@@ -11,7 +11,24 @@ public class TarjetaDeDebito extends MedioDePago implements Pagadora{
 		this.numeroDeTarjeta=identificador;
 		// TODO Auto-generated constructor stub
 	}
+	
+	@Override
+	public Boolean pagar(Compra compra, Double importe) throws SaldoInsuficineteException {
+		if(this.extraer(importe)) {
+			compra.isPagada();
+			return true;
+		}
+		return false;
+	}
 
+	@Override
+	public Boolean extraer(Double monto) throws SaldoInsuficineteException {
+		if(monto>super.getSaldo()) {
+			throw new SaldoInsuficineteException();
+		}
+		setSaldo(getSaldo()-monto);
+		return true;
+	}
 	
 	public Integer getNumeroDeTarjeta() {
 		return numeroDeTarjeta;
@@ -21,15 +38,6 @@ public class TarjetaDeDebito extends MedioDePago implements Pagadora{
 	public void setNumeroDeTarjeta(Integer numeroDeTarjeta) {
 		this.numeroDeTarjeta = numeroDeTarjeta;
 	}
-
-	
-
-	@Override
-	public Boolean pagar(Persona Vendedor, Double importe) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 
 	@Override
 	public int hashCode() {
@@ -48,6 +56,9 @@ public class TarjetaDeDebito extends MedioDePago implements Pagadora{
 		TarjetaDeDebito other = (TarjetaDeDebito) obj;
 		return Objects.equals(numeroDeTarjeta, other.numeroDeTarjeta);
 	}
+
+
+
 	
 	
 	

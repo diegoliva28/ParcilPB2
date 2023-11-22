@@ -13,33 +13,20 @@ public class CuentaVirtual extends MedioDePago implements Pagadora, Transferible
 	}
 	
 	@Override
-	public Boolean pagar(Persona Vendedor, Double importe) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Double getSaldo() {
-		// TODO Auto-generated method stub
+	public Boolean pagar(Compra compra, Double importe) {
 		return null;
 	}
 
 
 
 	@Override
-	public void depositar(Double importe) {
-		// TODO Auto-generated method stub
-		
+	public Boolean extraer(Double importe){
+		if(importe>super.getSaldo()) {
+		}
+		setSaldo(getSaldo()-importe);
+		return true;
 	}
-
-
-
-	@Override
-	public Boolean extraer(Double importe) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 	public Integer getCVU() {
 		return CVU;
 	}

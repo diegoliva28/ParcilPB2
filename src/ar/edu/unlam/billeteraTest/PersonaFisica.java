@@ -1,11 +1,11 @@
 package ar.edu.unlam.billeteraTest;
 
-public class PersonaFisica extends Persona implements Comparable<PersonaFisica>{
+public class PersonaFisica extends Persona{
 
 	private Integer cuil;
 
 	public PersonaFisica(String nombre, Integer dni,Integer CUIL) {
-		super(nombre, dni);
+		super(nombre, dni,CUIL);
 		// TODO Auto-generated constructor stub
 		this.cuil=CUIL;
 	}
@@ -19,9 +19,9 @@ public class PersonaFisica extends Persona implements Comparable<PersonaFisica>{
 	}
 
 	@Override
-	public int compareTo(PersonaFisica o) {
+	public int compareTo(Persona o) {
 		// TODO Auto-generated method stub
-		return this.cuil.compareTo(o.getCuil());
+		return this.cuil.compareTo(o.getIdentificar());
 	}
 
 	

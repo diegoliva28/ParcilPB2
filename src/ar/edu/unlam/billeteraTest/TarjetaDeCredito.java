@@ -19,9 +19,36 @@ public class TarjetaDeCredito extends MedioDePago implements Pagadora{
 	}
 	
 	@Override
-	public Boolean pagar(Persona Vendedor, Double importe) {
+	public Double getSaldo() {
+		return this.descubierto;
+	}
+	
+	@Override
+	public void depositar(Double monto) {
+		this.descubierto+=monto;
+	}
+	
+	@Override
+	public Boolean pagar(Compra compra, Double importe) throws ExcedeLimiteDeCompraException {
+//		if(this.extraer(importe)) {
+		if(this.descubierto>=compra.getMonto()) {
+			compra.SePago();
+			return true;
+		}
+		
+		return false;
+	}
+	//Si este da true, tengo que depositar en el vendedor
+
+	@Override
+	public Boolean extraer(Double monto) throws ExcedeLimiteDeCompraException  {
 		// TODO Auto-generated method stub
-		return null;
+		if(monto>this.descubierto) {
+			throw new ExcedeLimiteDeCompraException();
+		}
+		this.descubierto=this.descubierto-monto;
+		
+		return true;
 	}
 
 	public void setNumeroDeTarjeta(Integer numeroDeTarjeta) {
@@ -55,6 +82,7 @@ public class TarjetaDeCredito extends MedioDePago implements Pagadora{
 		TarjetaDeCredito other = (TarjetaDeCredito) obj;
 		return Objects.equals(numeroDeTarjeta, other.numeroDeTarjeta);
 	}
+
 	
 	
 }

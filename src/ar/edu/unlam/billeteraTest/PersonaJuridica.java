@@ -1,18 +1,18 @@
 package ar.edu.unlam.billeteraTest;
 
-public class PersonaJuridica extends Persona implements Comparable<PersonaJuridica>{
+public class PersonaJuridica extends Persona {
 
 	private Integer cuit;
 
 	public PersonaJuridica(String nombre, Integer dni,Integer CUIT) {
-		super(nombre, dni);
+		super(nombre, dni, CUIT);
 		// TODO Auto-generated constructor stub
 		this.cuit=CUIT;
 	}
 
-	public Compra generarQR(Double costo,MedioDePago medio,Integer cuil) {
+	public Compra generarQR(Integer codigo,Double costo,MedioDePago medioDelVendedor,Integer cuil) {
 	
-		Compra nueva=new Compra(costo, medio,cuil,getCuit() );
+		Compra nueva=new Compra(codigo,costo, medioDelVendedor,cuil,getCuit() );
 		return nueva;
 	}
 	public Integer getCuit() {
@@ -24,9 +24,9 @@ public class PersonaJuridica extends Persona implements Comparable<PersonaJuridi
 	}
 
 	@Override
-	public int compareTo(PersonaJuridica o) {
+	public int compareTo(Persona o) {
 		// TODO Auto-generated method stub
-		return this.cuit.compareTo(o.getCuit());
+		return this.cuit.compareTo(o.getIdentificar());
 	}
 
 	
